@@ -1,10 +1,11 @@
 Summary: Norwegian files for aspell
 Name: aspell-no
-Version: 0.1
-Release: 8
+Version: 0.2
+Release: 1
 Group: Applications/Text
-Source: aspell-no-0.1.tar.bz2
-Copyright: GPL
+Source: aspell-no-%{version}.tar.bz2
+URL: http://www.uio.no/~runekl/dictionary.html
+License: GPL
 Requires: aspell
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildRequires: aspell
@@ -21,7 +22,7 @@ A Norwegian dictionary for use with aspell, a spelling checker.
 cp /usr/share/aspell/iso8859-1.dat .
 
 LC_CTYPE=no_NO aspell --lang=norwegian --data-dir=. \
-    create master ./norwegian < words.norwegian
+    create master ./norwegian < words.norsk
 
 %install
 rm -fr $RPM_BUILD_ROOT
@@ -40,12 +41,15 @@ rm -fr $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc README
+%doc README README.orig
 /usr/share/aspell/*
 /usr/lib/aspell/*
 /usr/share/pspell/*
 
 %changelog
+* Thu Feb  1 2001 Trond Eivind Glomsrød <teg@redhat.com>
+- new dictionary, from the ispell 2.0 dictionary
+
 * Sat Aug 19 2000 Trond Eivind Glomsrød <teg@redhat.com>
 - rebuild
 
