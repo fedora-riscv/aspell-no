@@ -37,7 +37,7 @@ make
 
 %install
 make install
-cp ${RPM_BUILD_ROOT}%{_libdir}/aspell/no.multi ${RPM_BUILD_ROOT}%{_libdir}/aspell/nb.multi
+cp ${RPM_BUILD_ROOT}%{_libdir}/aspell/nb.multi ${RPM_BUILD_ROOT}%{_libdir}/aspell/no.multi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
