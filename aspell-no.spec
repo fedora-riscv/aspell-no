@@ -1,0 +1,69 @@
+Summary: Norwegian files for aspell
+Name: aspell-no
+Version: 0.1
+Release: 8
+Group: Applications/Text
+Source: aspell-no-0.1.tar.bz2
+Copyright: GPL
+Requires: aspell
+BuildRoot: %{_tmppath}/%{name}-%{version}-root
+BuildRequires: aspell
+ExcludeArch: ia64
+Obsoletes: ispell-no, ispell-norwegian
+
+%description
+A Norwegian dictionary for use with aspell, a spelling checker.
+
+%prep
+%setup -q
+
+%build
+cp /usr/share/aspell/iso8859-1.dat .
+
+LC_CTYPE=no_NO aspell --lang=norwegian --data-dir=. \
+    create master ./norwegian < words.norwegian
+
+%install
+rm -fr $RPM_BUILD_ROOT
+mkdir -p $RPM_BUILD_ROOT/usr/lib/aspell
+mkdir -p $RPM_BUILD_ROOT/usr/share/aspell
+mkdir -p $RPM_BUILD_ROOT/usr/share/pspell
+
+install -m 0644 norwegian $RPM_BUILD_ROOT/usr/lib/aspell
+ln -s norwegian $RPM_BUILD_ROOT/usr/lib/aspell/norsk
+install -m 0644 norwegian.dat $RPM_BUILD_ROOT/usr/share/aspell
+
+echo "/usr/lib/aspell/norwegian" > $RPM_BUILD_ROOT/usr/share/pspell/no-aspell.pwli
+
+%clean
+rm -fr $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+%doc README
+/usr/share/aspell/*
+/usr/lib/aspell/*
+/usr/share/pspell/*
+
+%changelog
+* Sat Aug 19 2000 Trond Eivind Glomsrød <teg@redhat.com>
+- rebuild
+
+* Wed Aug 16 2000 Trond Eivind Glomsrød <teg@redhat.com>
+- rebuild
+
+* Tue Aug 01 2000 Trond Eivind Glomsrød <teg@redhat.com>
+- rebuild
+
+* Wed Jul 12 2000 Prospector <bugzilla@redhat.com>
+- automatic rebuild
+
+* Fri Jun 30 2000 Trond Eivind Glomsrød <teg@redhat.com>
+- use the proper name on the pwli file
+
+* Mon Jun 26 2000 Trond Eivind Glomsrød <teg@redhat.com>
+- change build procedure
+- include .pwli file
+
+* Sat Jun 17 2000 Trond Eivind Glomsrød <teg@redhat.com>
+- first RPM
