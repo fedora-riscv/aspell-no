@@ -3,7 +3,7 @@
 Summary: Norwegian dictionaries for Aspell.
 Name: aspell-%{lang}
 Version: 0.50
-Release: 3
+Release: 4.1
 License: GPL
 Group: Applications/Text
 URL: http://aspell.net/
@@ -41,5 +41,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/aspell/*
 
 %changelog
+* Tue Mar 02 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Fri Feb 13 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
 * Mon Jun 23 2003 Adrian Havill <havill@redhat.com> 0.50-3
 - first build for new aspell (0.50)
