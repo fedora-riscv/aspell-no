@@ -1,7 +1,7 @@
 Summary: Norwegian files for aspell
 Name: aspell-no
 Version: 0.3
-Release: 4
+Release: 6
 Group: Applications/Text
 Source: aspell-no-%{version}.tar.bz2
 URL: http://www.uio.no/~runekl/dictionary.html
@@ -18,22 +18,22 @@ A Norwegian dictionary for use with aspell, a spelling checker.
 %setup -q
 
 %build
-cp /usr/share/aspell/iso8859-1.dat .
+cp %{_datadir}/aspell/iso8859-1.dat .
 
 LC_CTYPE=no_NO aspell --lang=norwegian --data-dir=. \
     create master ./norwegian < words.norsk
 
 %install
 rm -fr $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/usr/lib/aspell
-mkdir -p $RPM_BUILD_ROOT/usr/share/aspell
-mkdir -p $RPM_BUILD_ROOT/usr/share/pspell
+mkdir -p $RPM_BUILD_ROOT%{_libdir}/aspell
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/aspell
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/pspell
 
-install -m 0644 norwegian $RPM_BUILD_ROOT/usr/lib/aspell
-ln -s norwegian $RPM_BUILD_ROOT/usr/lib/aspell/norsk
-install -m 0644 norwegian.dat $RPM_BUILD_ROOT/usr/share/aspell
+install -m 0644 norwegian $RPM_BUILD_ROOT%{_libdir}/aspell
+ln -s norwegian $RPM_BUILD_ROOT%{_libdir}/aspell/norsk
+install -m 0644 norwegian.dat $RPM_BUILD_ROOT%{_datadir}/aspell
 
-echo "/usr/lib/aspell/norwegian" > $RPM_BUILD_ROOT/usr/share/pspell/no-aspell.pwli
+echo "%{_libdir}/aspell/norwegian" > $RPM_BUILD_ROOT%{_datadir}/pspell/no-aspell.pwli
 
 %clean
 rm -fr $RPM_BUILD_ROOT
@@ -41,11 +41,17 @@ rm -fr $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc README README.orig
-/usr/share/aspell/*
-/usr/lib/aspell/*
-/usr/share/pspell/*
+%{_datadir}/aspell/*
+%{_libdir}/aspell/*
+%{_datadir}/pspell/*
 
 %changelog
+* Wed Jan 22 2003 Tim Powers <timp@redhat.com>
+- rebuilt
+
+* Fri Dec 13 2002 Elliot Lee <sopwith@redhat.com> 0.3-5
+- Multilib, rebuild
+
 * Fri Jun 21 2002 Tim Powers <timp@redhat.com>
 - automated rebuild
 
