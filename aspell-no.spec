@@ -5,7 +5,7 @@ Summary: Norwegian dictionaries for Aspell.
 Name: aspell-no
 Epoch: 50
 Version: 0.50.1
-Release: 5
+Release: 6
 License: GPL
 Group: Applications/Text
 URL: http://aspell.net/
@@ -37,6 +37,7 @@ make
 
 %install
 make install
+cp ${RPM_BUILD_ROOT}%{_libdir}/aspell/no.multi ${RPM_BUILD_ROOT}%{_libdir}/aspell/nb.multi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -48,8 +49,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/aspell/*
 
 %changelog
-* Tue Sep 28 2004 Adrian Havill <havill@redhat.com> 50:0.50.1-5
-- bump n-v-r, remove debuginfo, use "nb" lang, utf alias filename
+* Tue Sep 28 2004 Adrian Havill <havill@redhat.com> 50:0.50.1-6
+- bump n-v-r, remove debuginfo, use "nb" lang, utf alias filename,
+  add nb locale (Norsk Bokmål) support (#126690; Håvard Wigtil)
 
 * Tue Mar 02 2004 Elliot Lee <sopwith@redhat.com>
 - rebuilt
