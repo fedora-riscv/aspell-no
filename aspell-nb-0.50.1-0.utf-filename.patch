@@ -1,0 +1,11 @@
+--- aspell-nb-0.50.1-0/Makefile.pre.orig	2004-09-28 03:40:50.965947148 -0400
++++ aspell-nb-0.50.1-0/Makefile.pre	2004-09-28 03:41:13.250918382 -0400
+@@ -7,7 +7,7 @@
+ data_files = nb.dat
+ doc_files = README COPYING Copyright
+ extra_files = configure info Makefile.pre
+-multi_files = bokmal.alias bokmål.alias nb.multi no.alias norsk.alias
++multi_files = bokmal.alias bokmÃ¥l.alias nb.multi no.alias norsk.alias
+ rws_files = nb.rws
+ 
+ 

@@ -1,16 +1,21 @@
-%define lang no
-%define langrelease 2
+%define lang nb
+%define langrelease 0
 Summary: Norwegian dictionaries for Aspell.
-Name: aspell-%{lang}
-Version: 0.50
-Release: 4.1
+#Name: aspell-%{lang}
+Name: aspell-no
+Epoch: 50
+Version: 0.50.1
+Release: 5
 License: GPL
 Group: Applications/Text
 URL: http://aspell.net/
 Source: ftp://ftp.gnu.org/gnu/aspell/dict/%{lang}/aspell-%{lang}-%{version}-%{langrelease}.tar.bz2
+Patch: aspell-nb-0.50.1-0.utf-filename.patch
 Buildrequires: aspell >= 0.50
 Requires: aspell >= 0.50
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
+
+%define debug_package %{nil}
 
 %description
 Provides the word list/dictionaries for the following: Norwegian
@@ -18,6 +23,8 @@ Provides the word list/dictionaries for the following: Norwegian
 %prep
 rm -rf $RPM_BUILD_ROOT
 %setup -q -n aspell-%{lang}-%{version}-%{langrelease}
+%patch -p1 -b .utf-filename
+mv $(echo -e 'bokm\345l.alias') $(echo -e 'bokm\303\245l.alias')
 
 %build
 echo "ASPELL = aspell" > Makefile
@@ -41,6 +48,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/aspell/*
 
 %changelog
+* Tue Sep 28 2004 Adrian Havill <havill@redhat.com> 50:0.50.1-5
+- bump n-v-r, remove debuginfo, use "nb" lang, utf alias filename
+
 * Tue Mar 02 2004 Elliot Lee <sopwith@redhat.com>
 - rebuilt
 
