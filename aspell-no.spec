@@ -1,7 +1,7 @@
 Summary: Norwegian files for aspell
 Name: aspell-no
 Version: 0.2
-Release: 1
+Release: 2
 Group: Applications/Text
 Source: aspell-no-%{version}.tar.bz2
 URL: http://www.uio.no/~runekl/dictionary.html
@@ -9,7 +9,6 @@ License: GPL
 Requires: aspell
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildRequires: aspell
-ExcludeArch: ia64
 Obsoletes: ispell-no, ispell-norwegian
 
 %description
@@ -47,6 +46,9 @@ rm -fr $RPM_BUILD_ROOT
 /usr/share/pspell/*
 
 %changelog
+* Tue May 01 2001 Bill Nottingham <notting@redhat.com>
+- build on ia64
+
 * Thu Feb  1 2001 Trond Eivind Glomsrød <teg@redhat.com>
 - new dictionary, from the ispell 2.0 dictionary
 
