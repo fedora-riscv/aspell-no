@@ -1,7 +1,7 @@
 Summary: Norwegian files for aspell
 Name: aspell-no
 Version: 0.3
-Release: 3
+Release: 4
 Group: Applications/Text
 Source: aspell-no-%{version}.tar.bz2
 URL: http://www.uio.no/~runekl/dictionary.html
@@ -46,6 +46,9 @@ rm -fr $RPM_BUILD_ROOT
 /usr/share/pspell/*
 
 %changelog
+* Fri Jun 21 2002 Tim Powers <timp@redhat.com>
+- automated rebuild
+
 * Fri Jun 14 2002 Trond Eivind Glomsrød <teg@redhat.com> 0.3-3
 - Rebuild
 
