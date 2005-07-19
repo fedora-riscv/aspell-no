@@ -5,14 +5,14 @@ Summary: Norwegian dictionaries for Aspell.
 Name: aspell-no
 Epoch: 50
 Version: 0.50.1
-Release: 8
+Release: 9
 License: GPL
 Group: Applications/Text
 URL: http://aspell.net/
 Source: ftp://ftp.gnu.org/gnu/aspell/dict/%{lang}/aspell-%{lang}-%{version}-%{langrelease}.tar.bz2
 Patch: aspell-nb-0.50.1-0.utf-filename.patch
-Buildrequires: aspell >= 0.50
-Requires: aspell >= 0.50
+Buildrequires: aspell >= 12:0.60
+Requires: aspell >= 12:0.60
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
 %define debug_package %{nil}
@@ -30,14 +30,14 @@ mv $(echo -e 'bokm\345l.alias') $(echo -e 'bokm\303\245l.alias')
 echo "ASPELL = aspell" > Makefile
 echo "DEST_DIR = $RPM_BUILD_ROOT" >> Makefile
 echo "WORD_LIST_COMPRESS = word-list-compress" >> Makefile
-echo "dictdir = ${RPM_BUILD_ROOT}%{_libdir}/aspell" >> Makefile
-echo "datadir = ${RPM_BUILD_ROOT}%{_datadir}/aspell" >> Makefile
+echo "dictdir = ${RPM_BUILD_ROOT}%{_libdir}/aspell-0.60" >> Makefile
+echo "datadir = ${RPM_BUILD_ROOT}%{_libdir}/aspell-0.60" >> Makefile
 cat Makefile.pre >> Makefile
 make
 
 %install
 make install
-cp ${RPM_BUILD_ROOT}%{_libdir}/aspell/nb.multi ${RPM_BUILD_ROOT}%{_libdir}/aspell/no.multi
+cp ${RPM_BUILD_ROOT}%{_libdir}/aspell-0.60/nb.multi ${RPM_BUILD_ROOT}%{_libdir}/aspell-0.60/no.multi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -45,10 +45,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 
-%{_libdir}/aspell/*
-%{_datadir}/aspell/*
+%{_libdir}/aspell-0.60/*
+#%{_datadir}/aspell/*
 
 %changelog
+* Tue Jul 19 2005 Ivana Varekova <varekova@redhat.com> 50:0.50.1-9
+- build with aspell-0.60.3
+
 * Mon Apr 11 2005 Ivana Varekova <varekova@redhat.com> 50:0.50.1-8
 - rebuilt
 
