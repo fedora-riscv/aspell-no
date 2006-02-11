@@ -5,7 +5,7 @@ Summary: Norwegian dictionaries for Aspell.
 Name: aspell-no
 Epoch: 50
 Version: 0.50.1
-Release: 9.2
+Release: 9.2.1
 License: GPL
 Group: Applications/Text
 URL: http://aspell.net/
@@ -49,6 +49,9 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/aspell/*
 
 %changelog
+* Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 50:0.50.1-9.2.1
+- bump again for double-long bug on ppc(64)
+
 * Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - 50:0.50.1-9.2
 - rebuilt for new gcc4.1 snapshot and glibc changes
 
