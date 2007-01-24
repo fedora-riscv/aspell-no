@@ -1,11 +1,11 @@
 %define lang nb
 %define langrelease 0
-Summary: Norwegian dictionaries for Aspell.
+Summary: Norwegian dictionaries for Aspell
 #Name: aspell-%{lang}
 Name: aspell-no
 Epoch: 50
 Version: 0.50.1
-Release: 9.2.2
+Release: 10%{?dist}
 License: GPL
 Group: Applications/Text
 URL: http://aspell.net/
@@ -21,10 +21,9 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Provides the word list/dictionaries for the following: Norwegian
 
 %prep
-rm -rf $RPM_BUILD_ROOT
 %setup -q -n aspell-%{lang}-%{version}-%{langrelease}
 %patch -p1 -b .utf-filename
-mv $(echo -e 'bokm\345l.alias') $(echo -e 'bokm\303\245l.alias')
+cp bokmal.alias bokmål.alias
 
 %build
 echo "ASPELL = aspell" > Makefile
@@ -36,6 +35,7 @@ cat Makefile.pre >> Makefile
 make
 
 %install
+rm -rf $RPM_BUILD_ROOT 
 make install
 cp ${RPM_BUILD_ROOT}%{_libdir}/aspell-0.60/nb.multi ${RPM_BUILD_ROOT}%{_libdir}/aspell-0.60/no.multi
 
@@ -46,9 +46,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 
 %{_libdir}/aspell-0.60/*
-#%{_datadir}/aspell/*
 
 %changelog
+* Wed Jan 24 2007 Ivana Varekova <varekova@redhat.com> - 50:0.50.1-10
+- spec file cleanup
+- fix 224147 - rawhide rebuild fails
+
 * Wed Jul 12 2006 Jesse Keating <jkeating@redhat.com> - 50:0.50.1-9.2.2
 - rebuild
 
