@@ -1,11 +1,10 @@
 %define lang nb
 %define langrelease 0
 Summary: Norwegian dictionaries for Aspell
-#Name: aspell-%{lang}
 Name: aspell-no
 Epoch: 50
 Version: 0.50.1
-Release: 10%{?dist}
+Release: 11%{?dist}
 License: GPL
 Group: Applications/Text
 URL: http://aspell.net/
@@ -13,7 +12,7 @@ Source: ftp://ftp.gnu.org/gnu/aspell/dict/%{lang}/aspell-%{lang}-%{version}-%{la
 Patch: aspell-nb-0.50.1-0.utf-filename.patch
 Buildrequires: aspell >= 12:0.60
 Requires: aspell >= 12:0.60
-BuildRoot: %{_tmppath}/%{name}-%{version}-root
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %define debug_package %{nil}
 
@@ -26,28 +25,28 @@ Provides the word list/dictionaries for the following: Norwegian
 cp bokmal.alias bokmål.alias
 
 %build
-echo "ASPELL = aspell" > Makefile
-echo "DEST_DIR = $RPM_BUILD_ROOT" >> Makefile
-echo "WORD_LIST_COMPRESS = word-list-compress" >> Makefile
-echo "dictdir = ${RPM_BUILD_ROOT}%{_libdir}/aspell-0.60" >> Makefile
-echo "datadir = ${RPM_BUILD_ROOT}%{_libdir}/aspell-0.60" >> Makefile
-cat Makefile.pre >> Makefile
+./configure
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT 
-make install
-cp ${RPM_BUILD_ROOT}%{_libdir}/aspell-0.60/nb.multi ${RPM_BUILD_ROOT}%{_libdir}/aspell-0.60/no.multi
+make install  DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(-,root,root)
-
+%defattr(-,root,root,-)
+%doc COPYING Copyright
 %{_libdir}/aspell-0.60/*
 
 %changelog
+* Thu Mar 29 2007 Ivana Varekova <varekova@redhat.com> - 50:0.50.1-11
+- add documentation
+- use configure script to create Makefile
+- update default buildroot
+- some minor spec changes
+
 * Wed Jan 24 2007 Ivana Varekova <varekova@redhat.com> - 50:0.50.1-10
 - spec file cleanup
 - fix 224147 - rawhide rebuild fails
