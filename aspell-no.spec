@@ -5,7 +5,7 @@ Name: aspell-no
 Epoch: 50
 Version: 0.50.1
 Release: 11%{?dist}
-License: GPL
+License: GPLv2
 Group: Applications/Text
 URL: http://aspell.net/
 Source: ftp://ftp.gnu.org/gnu/aspell/dict/%{lang}/aspell-%{lang}-%{version}-%{langrelease}.tar.bz2
