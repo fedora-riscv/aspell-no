@@ -4,7 +4,7 @@ Summary: Norwegian dictionaries for Aspell
 Name: aspell-no
 Epoch: 50
 Version: 0.50.1
-Release: 11%{?dist}
+Release: 12%{?dist}
 License: GPLv2
 Group: Applications/Text
 URL: http://aspell.net/
@@ -41,6 +41,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/aspell-0.60/*
 
 %changelog
+* Mon Sep 17 2007 Ivana Varekova <varekova@redhat.com> - 50:0.50.1-12
+- remove useles souce file
+
 * Thu Mar 29 2007 Ivana Varekova <varekova@redhat.com> - 50:0.50.1-11
 - add documentation
 - use configure script to create Makefile
