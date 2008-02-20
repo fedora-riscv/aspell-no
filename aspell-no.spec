@@ -4,7 +4,7 @@ Summary: Norwegian dictionaries for Aspell
 Name: aspell-no
 Epoch: 50
 Version: 0.50.1
-Release: 12%{?dist}
+Release: 13%{?dist}
 License: GPLv2
 Group: Applications/Text
 URL: http://aspell.net/
@@ -41,6 +41,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/aspell-0.60/*
 
 %changelog
+* Wed Feb 20 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 50:0.50.1-13
+- Autorebuild for GCC 4.3
+
 * Mon Sep 17 2007 Ivana Varekova <varekova@redhat.com> - 50:0.50.1-12
 - remove useles souce file
 
