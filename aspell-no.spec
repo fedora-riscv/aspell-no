@@ -4,7 +4,7 @@ Summary: Norwegian dictionaries for Aspell
 Name: aspell-no
 Epoch: 50
 Version: 0.50.1
-Release: 14%{?dist}
+Release: 15%{?dist}
 License: GPLv2
 Group: Applications/Text
 URL: http://aspell.net/
@@ -41,6 +41,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/aspell-0.60/*
 
 %changelog
+* Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 50:0.50.1-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Mon Feb 23 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 50:0.50.1-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
