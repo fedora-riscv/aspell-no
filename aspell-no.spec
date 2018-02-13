@@ -12,7 +12,6 @@ Source: ftp://ftp.gnu.org/gnu/aspell/dict/%{lang}/aspell-%{lang}-%{version}-%{la
 Patch: aspell-nb-0.50.1-0.utf-filename.patch
 Buildrequires: aspell >= 12:0.60
 Requires: aspell >= 12:0.60
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %define debug_package %{nil}
 
