@@ -32,7 +32,6 @@ rm -rf $RPM_BUILD_ROOT
 make install  DESTDIR=$RPM_BUILD_ROOT
 
 %files
-%defattr(-,root,root,-)
 %doc COPYING Copyright
 %{_libdir}/aspell-0.60/*
 
