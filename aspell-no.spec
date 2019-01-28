@@ -6,7 +6,6 @@ Epoch: 50
 Version: 0.50.1
 Release: 29%{?dist}
 License: GPLv2
-Group: Applications/Text
 URL: http://aspell.net/
 Source: ftp://ftp.gnu.org/gnu/aspell/dict/%{lang}/aspell-%{lang}-%{version}-%{langrelease}.tar.bz2
 Patch: aspell-nb-0.50.1-0.utf-filename.patch
