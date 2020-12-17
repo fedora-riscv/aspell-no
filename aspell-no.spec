@@ -10,6 +10,7 @@ URL: http://aspell.net/
 Source: ftp://ftp.gnu.org/gnu/aspell/dict/%{lang}/aspell-%{lang}-%{version}-%{langrelease}.tar.bz2
 Patch: aspell-nb-0.50.1-0.utf-filename.patch
 Buildrequires: aspell >= 12:0.60
+BuildRequires: make
 Requires: aspell >= 12:0.60
 
 %define debug_package %{nil}
