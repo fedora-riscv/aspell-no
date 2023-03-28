@@ -4,8 +4,8 @@ Summary: Norwegian dictionaries for Aspell
 Name: aspell-no
 Epoch: 50
 Version: 0.50.1
-Release: 39%{?dist}
-License: GPL-2.0-or-later
+Release: 40%{?dist}
+License: GPL-2.0-only
 URL: http://aspell.net/
 Source: ftp://ftp.gnu.org/gnu/aspell/dict/%{lang}/aspell-%{lang}-%{version}-%{langrelease}.tar.bz2
 Patch: aspell-nb-0.50.1-0.utf-filename.patch
@@ -36,6 +36,9 @@ make install  DESTDIR=$RPM_BUILD_ROOT
 %{_libdir}/aspell-0.60/*
 
 %changelog
+* Tue Mar 28 2023 Nikola Forró <nforro@redhat.com> - 50:0.50.1-40
+- Fix License
+
 * Tue Mar 28 2023 Nikola Forró <nforro@redhat.com> - 50:0.50.1-39
 - Use SPDX license expression in License
 
