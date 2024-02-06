@@ -4,7 +4,7 @@ Summary: Norwegian dictionaries for Aspell
 Name: aspell-no
 Epoch: 50
 Version: 0.50.1
-Release: 41%{?dist}
+Release: 41.rv64%{?dist}
 License: GPL-2.0-only
 URL: http://aspell.net/
 Source: ftp://ftp.gnu.org/gnu/aspell/dict/%{lang}/aspell-%{lang}-%{version}-%{langrelease}.tar.bz2
@@ -29,7 +29,7 @@ Provides the word list/dictionaries for the following: Norwegian
 
 %prep
 %setup -q -n aspell-%{lang}-%{version}-%{langrelease}
-%patch -p1 -b .utf-filename
+%patch0 -p1 -b .utf-filename
 cp bokmal.alias bokmål.alias
 
 %build
@@ -45,6 +45,9 @@ make install  DESTDIR=$RPM_BUILD_ROOT
 %{_libdir}/aspell-0.60/*
 
 %changelog
+* Tue Feb 06 2024 Jiasheng Zhao <JasenChao@gmail.com> - 50:0.50.1-41.rv64
+- Rebuilt for riscv64
+
 * Wed Jul 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 50:0.50.1-41
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
